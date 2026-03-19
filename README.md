@@ -1,6 +1,3 @@
-# html-lista-certo
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
