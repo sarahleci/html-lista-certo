@@ -1,5 +1,7 @@
 <html>
 
+html>
+
 <head>
     <title>Sistema Escolar</title>
 
@@ -9,7 +11,6 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 0;
         }
 
         .titulo {
@@ -142,8 +143,7 @@
             <span onclick="navegar('funcionarios')">Funcionarios</span>
         </div>
     </div>
-    <div class="menu-direita"
-     <span>Login</span>
+    <div class="menu-direita" <span>Login</span>
     </div>
 
     <!-----------------------------------------------------------ALUNOS----------------------------------------------------------------------------->
@@ -314,6 +314,12 @@
         function navegar(pagina) {
 
             let paginas = document.getElementsByClassName("pagina");
+            for (let i = 0; i < paginas.length; i++) {
+                paginas[i].classList.remove("pagina-ativa");
+
+                document.getElementById(pagina).classList.add("pagina-ativa");
+
+            }
 
         }
 
@@ -355,3 +361,4 @@
     <body>
 
 </html>
+        
