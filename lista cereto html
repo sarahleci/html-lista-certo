@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Sistema Escolar</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    margin: 0;
+}
+
+.menu {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-centro span {
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.pagina {
+    display: none;
+    background: white;
+    margin: 30px auto;
+    padding: 25px;
+    width: 700px;
+    max-width: 90%;
+    border-radius: 10px;
+}
+
+.pagina-ativa {
+    display: block;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#dashboard {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: #2563eb;
+    color: white;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+    <div></div>
+    <div class="menu-centro">
+        <span onclick="navegar('dashboard')">Inicio</span>
+        <span onclick="navegar('alunos')">Alunos</span>
+        <span onclick="navegar('professores')">Professores</span>
+        <span onclick="navegar('funcionarios')">Funcionarios</span>
+    </div>
+    <div>Login</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="pagina pagina-ativa">
+    <div class="card">
+        <h3>Alunos</h3>
+        <p id="contAlunos">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Professores</h3>
+        <p id="contProf">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Funcionários</h3>
+        <p id="contFunc">0</p>
+    </div>
+</div>
+
+<!-- ALUNOS -->
+<div id="alunos" class="pagina">
+    <div class="titulo">
+        <h2>Cadastro de Alunos</h2>
+    </div>
+
+    <form onsubmit="cadastrarAluno(event)">
+        <label>Nome</label>
+        <input type="text" required>
+
+        <label>Data de Nascimento</label>
+        <input type="date" required>
+
+        <label>CPF</label>
+        <input type="text" required>
+
+        <label>CPF da Mãe</label>
+        <input type="text" required>
+
+        <label>CPF do Pai</label>
+        <input type="text" required>
+
+        <label>Turno</label>
+        <select required>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+        </select>
+
+        <label>Turma</label>
+        <select required>
+            <option>1º Ano</option>
+            <option>2º Ano</option>
+            <option>3º Ano</option>
+            <option>4º Ano</option>
+            <option>5º Ano</option>
+        </select>
+
+        <button>Cadastrar</button>
+    </form>
+</div>
+
+<!-- PROFESSORES -->
+<div id="professores" class="pagina">
+    <div class="titulo">
+        <h2>Cadastro de Professores</h2>
+    </div>
+
+    <form onsubmit="cadastrarProf(event)">
+        <label>Nome</label>
+        <input type="text" required>
+
+        <label>Data de Nascimento</label>
+        <input type="date" required>
+
+        <label>CPF</label>
+        <input type="text" required>
+
+        <label>Turno</label>
+        <select required>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+        </select>
+
+        <button>Cadastrar</button>
+    </form>
+</div>
+
+<!-- FUNCIONARIOS -->
+<div id="funcionarios" class="pagina">
+    <div class="titulo">
+        <h2>Cadastro de Funcionários</h2>
+    </div>
+
+    <form onsubmit="cadastrarFunc(event)">
+        <label>Nome</label>
+        <input type="text" required>
+
+        <label>Data de Nascimento</label>
+        <input type="date" required>
+
+        <label>CPF</label>
+        <input type="text" required>
+
+        <label>Turno</label>
+        <select required>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+        </select>
+
+        <button>Cadastrar</button>
+    </form>
+</div>
+
+<script>
+function navegar(pagina) {
+    let paginas = document.querySelectorAll(".pagina");
+    paginas.forEach(p => p.classList.remove("pagina-ativa"));
+    document.getElementById(pagina).classList.add("pagina-ativa");
+}
+
+let alunos = 0;
+let profs = 0;
+let funcs = 0;
+
+function atualizarDashboard() {
+    document.getElementById("contAlunos").innerText = alunos;
+    document.getElementById("contProf").innerText = profs;
+    document.getElementById("contFunc").innerText = funcs;
+}
+
+function cadastrarAluno(e) {
+    e.preventDefault();
+    alunos++;
+    atualizarDashboard();
+}
+
+function cadastrarProf(e) {
+    e.preventDefault();
+    profs++;
+    atualizarDashboard();
+}
+
+function cadastrarFunc(e) {
+    e.preventDefault();
+    funcs++;
+    atualizarDashboard();
+}
+</script>
+
+</body>
+</html>
